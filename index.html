@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,6 +42,7 @@ text-decoration: none;
 margin-left: 4px;
 font-weight: bold;
 font-size: 24px;
+cursor: pointer;
 }
 a:hover {
 text-decoration: underline;
@@ -92,7 +92,34 @@ margin-top: 16px;
 padding: 8px;     
 }
 }
+
+/* ===== POPUP STYLES ===== */
+.modal {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0,0,0,0.5);
+padding-top: 80px;
+}
+.modal-content {
+background: white;
+margin: auto;
+padding: 20px;
+width: 60%;
+border-radius: 20px;
+font-size: 20px;
+color: black;
+}
+.close-btn {
+float: right;
+font-size: 28px;
+cursor: pointer;
+}
 </style>
+
 </head>
 <body>
 <div class="navbar">
@@ -101,41 +128,103 @@ DITIB<br> <span class="text-highlight">Gemeinde Gießen</span>
 </h1>
 <div>
 
-<a href="#" target="_blank" rel="noopener noreferrer">Informationen</a>
-<a href="#" target="_blank" rel="noopener noreferrer">Gebetszeiten</a>
-<a href="#" target="_blank" rel="noopener noreferrer">Ereignisse</a>
-<a href="#" target="_blank" rel="noopener noreferrer">Kontakt</a>
+<a onclick="openModal('info')">Informationen</a>
+<a onclick="openModal('gebet')">Gebetszeiten</a>
+<a onclick="openModal('events')">Ereignisse</a>
+<a onclick="openModal('kontakt')">Kontakt</a>
+
 </div>
 </div>
+
 <div class="image-container">
 <img class="header-image" src="moschee.jpg">
 <div class="text-container">
 Eine Moschee für alle – ein Ort des Glaubens, des Dialogs und des gemeinsamen Miteinanders.
 </div>
 <div class="maps-container">
-<iframe src="<iframe src="<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5065.221899251657!2d8.683489800000002!3d50.5971841!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bc58c84cc28931%3A0xbc4841340d1935de!2sGiessen%20Central%20Mosque!5e0!3m2!1sen!2sde!4v1764582900460!5m2!1sen!2sde" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>"></iframe>></iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5065.221899251657!2d8.683489800000002!3d50.5971841!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bc58c84cc28931%3A0xbc4841340d1935de!2sGiessen%20Central%20Mosque!5e0!3m2!1sen!2sde!4v1764582900460!5m2!1sen!2sde" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 <div class="text-container maps-right">
 Die DITIB-Gemeinde Gießen möchte ein Gemeindezentrum mit Moschee als offenen Ort für Gebet, Begegnung und kulturelles Miteinander schaffen.
 </div>
 </div>
 </div>
+
 <div class="legal-content">
-     (c) 1987 DITIB-Company GmbH <a href="#"> Impressum</a> | <a href="#">Datenschutz</a>
+(c) 1987 DITIB-Company GmbH 
+<a onclick="openModal('impressum')">Impressum</a> | 
+<a onclick="openModal('datenschutz')">Datenschutz</a>
 </div>
+
+<!-- ===== MODALS ===== -->
+
+<div id="info" class="modal">
+<div class="modal-content">
+<span class="close-btn" onclick="closeModal('info')">&times;</span>
+<h2>Informationen</h2>
+<p>Die DITIB Gemeinde Gießen ist eine religiöse und kulturelle Einrichtung, die muslimischen Bürgern einen Ort für Gebet, Austausch und Gemeinschaft bietet.</p>
+</div>
+</div>
+
+<div id="gebet" class="modal">
+<div class="modal-content">
+<span class="close-btn" onclick="closeModal('gebet')">&times;</span>
+<h2>Gebetszeiten</h2>
+<p>06:13 – Morgendämmerung</p>
+<p>12:22 – Mittag</p>
+<p>14:08 – Nachmittag</p>
+<p>16:28 – Abend</p>
+<p>18:08 – Nacht</p>
+</div>
+</div>
+
+<div id="events" class="modal">
+<div class="modal-content">
+<span class="close-btn" onclick="closeModal('events')">&times;</span>
+<h2>Ereignisse</h2>
+<p>12.12.2025 — 15:00–19:00 — Fisch Bazar</p>
+<p>15.12.2025 — 17:00–19:00 — Abend Unterricht</p>
+<p>18.12.2025 — 18:00–20:00 — Grillhütte</p>
+</div>
+</div>
+
+<div id="kontakt" class="modal">
+<div class="modal-content">
+<span class="close-btn" onclick="closeModal('kontakt')">&times;</span>
+<h2>Kontakt</h2>
+<p>Enes — Tel: 000000 — E-Mail: test@test.com</p>
+<p>Mohammad — Tel: 000000 — E-Mail: test2@test.com</p>
+</div>
+</div>
+
+<div id="impressum" class="modal">
+<div class="modal-content">
+<span class="close-btn" onclick="closeModal('impressum')">&times;</span>
+<h2>Impressum</h2>
+<p>DITIB Gemeinde Gießen<br>Vertreten durch den Vorstand<br>Adresse: Gießen, Deutschland</p>
+</div>
+</div>
+
+<div id="datenschutz" class="modal">
+<div class="modal-content">
+<span class="close-btn" onclick="closeModal('datenschutz')">&times;</span>
+<h2>Datenschutz</h2>
+<p>Wir erheben keine personenbezogenen Daten und speichern keine Nutzungsprofile.</p>
+</div>
+</div>
+
+<script>
+function openModal(id) {
+document.getElementById(id).style.display = "block";
+}
+function closeModal(id) {
+document.getElementById(id).style.display = "none";
+}
+window.onclick = function(event) {
+document.querySelectorAll('.modal').forEach(m => {
+if (event.target === m) m.style.display = "none";
+});
+}
+</script>
+
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
